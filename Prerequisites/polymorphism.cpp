@@ -1,7 +1,4 @@
-/*
-dynamic polymorphism - method overriding - different objects, same stimulus
-static polymorphism - method overloading - one object, same stimulus, different conditions
-*/
+// this program includes all the concepts of OOPs
 #include <iostream>
 #include <string>
 using namespace std;
@@ -19,10 +16,10 @@ public:
     {
         this->brand = b;
         this->model = m;
-        this->isEngineOn = false;
-        this->currentSpeed = 0;
+        isEngineOn = false;
+        currentSpeed = 0;
     }
-    // common methods
+    // common methods for all cars
     void startEngine()
     {
         isEngineOn = true;
@@ -34,9 +31,10 @@ public:
         currentSpeed = 0;
         cout << brand << " " << model << " : Engine turned off!" << endl;
     }
-    virtual void accelerate() = 0; // abstract method for dynamic polymorphism
-    virtual void brake() = 0;      // abstract method for dynamic polymorphism
-    virtual ~Car() {};             // virtual destructor
+    virtual void accelerate() = 0;          // abstract method for dynamic polymorphism
+    virtual void accelerate(int speed) = 0; // abstract method for static polymorphism
+    virtual void brake() = 0;               // abstract method for dynamic polymorphism
+    virtual ~Car() {};                      // virtual destructor
 };
 class ManualCar : public Car
 {
@@ -54,7 +52,7 @@ public:
         currentGear = gear;
         cout << brand << " " << model << " : Shifted to gear " << currentGear << endl;
     }
-    // overriding accelerate() - dynamic polymorphism
+    // overriding accelerate - dynamic polymorphism
     void accelerate()
     {
         if (!isEngineOn)
@@ -65,7 +63,18 @@ public:
         currentSpeed += 20;
         cout << brand << " " << model << " : Accelerating to " << currentSpeed << "km/h" << endl;
     }
-    // overriding brake() - dynamic polymorphism
+    // overriding and overloading accelerate - dynamic + static polymorphism
+    void accelerate(int speed)
+    {
+        if (!isEngineOn)
+        {
+            cout << brand << " " << model << " : Engine is off. Cannot accelerate!" << endl;
+            return;
+        }
+        currentSpeed += speed;
+        cout << brand << " " << model << " : Accelerating to " << currentSpeed << "km/h" << endl;
+    }
+    // overriding brake - dynamic polymorphism
     void brake()
     {
         currentSpeed -= 20;
@@ -90,7 +99,7 @@ public:
         batteryLevel = 100;
         cout << brand << " " << model << " : Battery fully charged. " << endl;
     }
-    // overriding accelerate() - dynamic polymorphism
+    // overriding accelerate - dynamic polymorphism
     void accelerate()
     {
         if (!isEngineOn)
@@ -107,10 +116,27 @@ public:
         batteryLevel -= 10;
         cout << brand << " " << model << " : Accelerating to " << currentSpeed << "km/h" << " Battery level " << batteryLevel << " %" << endl;
     }
-    // overriding brake() - dynamic polymorphism
+    // overriding and overloading accelerate - dynamic + static polymorphism
+    void accelerate(int speed)
+    {
+        if (!isEngineOn)
+        {
+            cout << brand << " " << model << " : Engine is off. Cannot accelerate!" << endl;
+            return;
+        }
+        if (batteryLevel <= 0)
+        {
+            cout << brand << " " << model << " : Battery dead! Cannot accelerate." << endl;
+            return;
+        }
+        currentSpeed += speed;
+        batteryLevel -= 10;
+        cout << brand << " " << model << " : Accelerating to " << currentSpeed << "km/h" << " Battery level " << batteryLevel << " %" << endl;
+    }
+    // overriding brake - dynamic polymorphism
     void brake()
     {
-        currentSpeed -= 15;
+        currentSpeed -= 20;
         if (currentSpeed < 0)
             currentSpeed = 0;
         cout << brand << " " << model << " : Regenerative Braking! Speed is now " << currentSpeed << "km/h" << " Battery level " << batteryLevel << " %" << endl;
@@ -124,6 +150,7 @@ int main()
     myManualCar->accelerate();
     myManualCar->shiftGear(2);
     myManualCar->accelerate();
+    myManualCar->accelerate(34);
     myManualCar->brake();
     myManualCar->stopEngine();
     delete myManualCar;
@@ -134,6 +161,8 @@ int main()
     myElectricCar->chargeBattery(); // specific for electric car
     myElectricCar->startEngine();
     myElectricCar->accelerate();
+    myElectricCar->accelerate(27);
+    myElectricCar->brake();
     myElectricCar->accelerate();
     myElectricCar->brake();
     myElectricCar->stopEngine();
