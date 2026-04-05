@@ -5,14 +5,10 @@ Design patterns are reusable solutions to common problems that occur during soft
 
 ### Why Use Design Patterns?
 
-Reusability: <br>
-Solve problems using proven approaches.<br>
-Maintainability: <br>
-Make code easier to understand and modify.<br>
-Scalability: <br>
-Help design systems that can grow and adapt.<br>
-Communication: <br>
-Provide a shared vocabulary for developers.
+Reusability: Solve problems using proven approaches.<br>
+Maintainability: Make code easier to understand and modify.<br>
+Scalability: Help design systems that can grow and adapt.<br>
+Communication: Provide a shared vocabulary for developers.
 <br>
 <br>
 ![Screenshot](types-of-design-patterns.png)
