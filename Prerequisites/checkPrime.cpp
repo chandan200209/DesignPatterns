@@ -3,7 +3,7 @@ using namespace std;
 void checkPrime(int n)
 {
     int cnt = 0;
-    for (int i = 1; i * i < n; i++)
+    for (int i = 1; i * i <= n; i++)
     {
         if (n % i == 0)
         {
