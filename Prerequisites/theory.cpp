@@ -59,4 +59,73 @@ procedural programming - functions, loops, blocks, if else, switches
 object oriented programming - real world modelling, data security, scalable and reusable applications
 objects interact with each other
 object - characteristics, behavior
+
+UML diagrams - there are 14 diagrams in total.
+7 static (structural) and 7 dynaminc (behavioural)
+only 2 are main, rest are specific to the application
+class diagram - structural
+sequence diagram - behavioural
+
+class diagram - i) class structure ii) associations/connections
+class structure - access specifieres ->
+    + public
+    # protected
+    - private
+
+associations
+i) class associations - inheritance (is-a relationship) filled arrow is used to denote inheritance
+ii) object associations - a) simple association b) aggregation c) composition
+all these three have a 'has-a' relationship, they are programmatically same
+
+simple association -
+empty arrow, strong line is used for simple association
+eg. arjun lives in a house
+
+aggregation -
+diamond and strong line is used
+diamond on the side of aggregator (container object)
+eg. room has bed and chair
+
+composition -
+strongest form of relationship between two objects
+individual objects do not exists here
+filled diamond and strong line is used
+filled diamond on the side of aggregator (container object)
+
+how to represent this programatically
+A{
+    method1();
+}
+B{
+    A *a; // reference
+    B(){
+        a = new A(); // initialize
+    }
+    method2();
+}
+main(){
+    B *b = new B();
+    b->method2();
+    b->a->method1();
+}
+
+sequence diagram -
+objects - shown as a box
+lifeline - when the object is present or created in the application
+activation bar - when the object is ready to sent or receive msg
+messages - asynchronous - don't wait for response, synchronous - can't sent until response comes
+
+for synchronous -
+message as strong line + closed (filled) arrow
+response as dashed line + closed (filled) arrow
+for asynchronous -
+message as strong line + open arrow
+
+create message - when an object is being created
+destroy message - when an object is being destroyed
+lost message - point encircled by a circle
+found message - same as lost message, but the source is unknown here.
+alt - if/else condition
+option - if condition only
+loop - for/while loop
 */
