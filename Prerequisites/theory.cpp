@@ -13,7 +13,7 @@ loadbalancing - distributing load/request on different servers
 
 databases - sql, nosql, vector
 
-indexing - fetching required data efficiently, type of data structures uded, like, b tree,
+indexing - fetching required data efficiently, type of data structures used, like, b tree,
 b+ tree.
 
 sharding - allocating data to various instances of databases situated across the globe.
