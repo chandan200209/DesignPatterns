@@ -1,0 +1,4 @@
+Hello World
+This is a document editor example.
+	This is a line after indentation.
+[Image : image.jpg]

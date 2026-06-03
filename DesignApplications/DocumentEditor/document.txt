@@ -1,0 +1,3 @@
+this is programming lecture
+design patterns
+[Image : patterns.jpg]
